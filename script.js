@@ -64,16 +64,16 @@ function closeModal() {
 
 // ticket add function
 function addTicket(ticketId) {
-  let numberOfTicket = document.getElementById(ticketId).value;
+  let numberOfTicket = getTicketNumber(ticketId);
   numberOfTicket++;
-
   document.getElementById(ticketId).value = numberOfTicket;
+
   totalPrice();
 }
 
 // ticket remove function
 function removeTicket(ticketId) {
-  let numberOfTicket = document.getElementById(ticketId).value;
+  let numberOfTicket = getTicketNumber(ticketId);
 
   if (numberOfTicket > 0) {
     numberOfTicket--;
@@ -87,6 +87,7 @@ function removeTicket(ticketId) {
 function totalPrice() {
   const firstClassTicketPrice = getTicketNumber("firstClassTicketNumber") * 150;
   const economyClassTicketPrice = getTicketNumber("economyClassTicketNumber") * 100;
+
   const subTotalPrice = firstClassTicketPrice + economyClassTicketPrice;
   const vat = subTotalPrice * 0.1;
   const totalPrice = subTotalPrice + vat;
