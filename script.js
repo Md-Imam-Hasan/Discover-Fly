@@ -17,8 +17,8 @@ document.getElementById("removeTicketEconomyClass").addEventListener("click", fu
 
 // Book now button section
 document.getElementById("bookNowButton").addEventListener("click", function () {
-  const firstClassTicketNumber = document.getElementById("firstClassTicketNumber").value;
-  const economyClassTicketNumber = document.getElementById("economyClassTicketNumber").value;
+  const firstClassTicketNumber = getTicketNumber("firstClassTicketNumber");
+  const economyClassTicketNumber = getTicketNumber("economyClassTicketNumber");
   const total = document.getElementById("total").innerText;
 
   if ((firstClassTicketNumber == 0 && economyClassTicketNumber == 0) || total == "") {
@@ -26,9 +26,13 @@ document.getElementById("bookNowButton").addEventListener("click", function () {
   } else {
     if (firstClassTicketNumber > 0) {
       document.getElementById("firstClassSeat").innerText = firstClassTicketNumber;
+    } else {
+      document.getElementById("firstClassSeat").innerText = "0";
     }
     if (economyClassTicketNumber > 0) {
       document.getElementById("economyClassSeat").innerText = economyClassTicketNumber;
+    } else {
+      document.getElementById("economyClassSeat").innerText = "0";
     }
     document.getElementById("pricing").innerText = total;
     bookingConfirmation();
