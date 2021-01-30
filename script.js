@@ -85,8 +85,8 @@ function removeTicket(ticketId) {
 
 // calculate total price function 
 function totalPrice() {
-  const firstClassTicketPrice = (document.getElementById("firstClassTicketNumber").value) * 150;
-  const economyClassTicketPrice = (document.getElementById("economyClassTicketNumber").value) * 100;
+  const firstClassTicketPrice = getTicketNumber("firstClassTicketNumber") * 150;
+  const economyClassTicketPrice = getTicketNumber("economyClassTicketNumber") * 100;
   const subTotalPrice = firstClassTicketPrice + economyClassTicketPrice;
   const vat = subTotalPrice * 0.1;
   const totalPrice = subTotalPrice + vat;
@@ -94,4 +94,8 @@ function totalPrice() {
   document.getElementById("subtotal").innerText = subTotalPrice;
   document.getElementById("vat").innerText = vat;
   document.getElementById("total").innerText = totalPrice;
+}
+
+function getTicketNumber(ticketId) {
+  return document.getElementById(ticketId).value
 }
